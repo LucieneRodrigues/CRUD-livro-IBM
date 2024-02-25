@@ -34,12 +34,13 @@ public class Reserva {
 
         }
 
-        public Reserva(long idReserva, String email, LocalDate dataInicio, LocalDate dataFinal) {
+        public Reserva(long idReserva, String email, long livroId, LocalDate dataInicio, LocalDate dataFinal) {
             this.idReserva = idReserva;
             this.email = email;
+            this.livroId = livroId;
             this.dataInicio = dataInicio;
             this.dataFinal = dataFinal;
-            this.livroId = livroId;
+
         }
 
     public Reserva(String email, long livroId, LocalDate dataInicio, LocalDate dataFinal) {
