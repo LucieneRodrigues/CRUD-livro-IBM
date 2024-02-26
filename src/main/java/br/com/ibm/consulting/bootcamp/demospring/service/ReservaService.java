@@ -1,12 +1,9 @@
 package br.com.ibm.consulting.bootcamp.demospring.service;
-
 import br.com.ibm.consulting.bootcamp.demospring.domain.Livro;
 import br.com.ibm.consulting.bootcamp.demospring.domain.Reserva;
 import br.com.ibm.consulting.bootcamp.demospring.repository.ReservaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.List;
-
 import org.springframework.stereotype.Service;
 
 
