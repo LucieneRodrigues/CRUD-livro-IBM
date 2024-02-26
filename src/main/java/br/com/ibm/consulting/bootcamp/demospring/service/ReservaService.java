@@ -24,25 +24,21 @@ import org.springframework.stereotype.Service;
             return reserva;
         }
 
-        /*public Reserva criarReserva(String email, Livro livro, LocalDate dataInicio, LocalDate dataFinal) {
-            Reserva reserva = new Reserva(email, livro, dataInicio, dataFinal);
-            return repository.saveAndFlush(reserva);
-        }*/
 
-        public List<Livro> listar() {
+        public List<Reserva> listar() {
             return repository.findAll();
         }
 
-        public Livro obter(long id) {
-            return repository.findById(id).orElse(null);
+        public Reserva obter(String email) {
+            return repository.getReferenceById(email);
         }
 
-        public void alterar(long id, Reserva novoLivro) {
-            // Implemente a lógica para atualizar a reserva com o novo livro
+        public void alterar(String email, Reserva novaReserva) {
+            var alterada =new Reserva (email, novaReserva.getDataInicio(),novaReserva.getDataFinal());
         }
 
-        public void excluir(long id) {
-            repository.deleteById(id);
+        public void excluir(String email) {
+            repository.deleteById(email);
         }
 
     }

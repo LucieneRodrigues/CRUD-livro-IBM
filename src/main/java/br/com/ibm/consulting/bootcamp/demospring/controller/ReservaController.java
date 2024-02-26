@@ -1,5 +1,4 @@
 package br.com.ibm.consulting.bootcamp.demospring.controller;
-import br.com.ibm.consulting.bootcamp.demospring.domain.Livro;
 import br.com.ibm.consulting.bootcamp.demospring.domain.Reserva;
 import br.com.ibm.consulting.bootcamp.demospring.service.ReservaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,8 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-
-//verificar se o path está correto
 @RestController
 @RequestMapping("/api/livros/:id/reservas")
 public class ReservaController {
@@ -23,25 +20,25 @@ public class ReservaController {
     }
 
     @GetMapping
-    public List<Livro> listar() {
+    public List<Reserva> listar() {
         return service.listar();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Reserva> obter(@PathVariable long id) {
-        var reserva = service.obter(id);
+    @GetMapping("/email")
+    public ResponseEntity<Reserva> obter(@PathVariable String email) {
+        var reserva = service.obter(email);
         if (reserva != null) {
             return new ResponseEntity<Reserva>(reserva, HttpStatus.OK);
         }
         return new ResponseEntity<Reserva>(reserva, HttpStatus.NOT_FOUND);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/email")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity<Void> atualizar(@RequestBody Reserva reserva, @PathVariable long id) {
-        var reservaExistente = service.obter(id);
+    public ResponseEntity<Void> atualizar(@RequestBody Reserva reserva, @PathVariable String email) {
+        var reservaExistente = service.obter(email);
         if (reservaExistente != null) {
-            service.alterar(id, reserva);
+            service.alterar(email, reserva);
             return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
@@ -49,12 +46,12 @@ public class ReservaController {
 
 
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/email")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity<Void> excluir(@PathVariable long id) {
-        var reservaExistente = service.obter(id);
+    public ResponseEntity<Void> excluir(@PathVariable String email) {
+        var reservaExistente = service.obter(email);
         if (reservaExistente != null) {
-            service.excluir(id);
+            service.excluir(email);
             return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);

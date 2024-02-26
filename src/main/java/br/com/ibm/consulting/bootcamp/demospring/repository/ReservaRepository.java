@@ -1,9 +1,8 @@
 package br.com.ibm.consulting.bootcamp.demospring.repository;
-
-import br.com.ibm.consulting.bootcamp.demospring.domain.Livro;
+import br.com.ibm.consulting.bootcamp.demospring.domain.Reserva;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ReservaRepository extends JpaRepository<Livro, Long> {
+public interface ReservaRepository extends JpaRepository<Reserva, String> {
 }
