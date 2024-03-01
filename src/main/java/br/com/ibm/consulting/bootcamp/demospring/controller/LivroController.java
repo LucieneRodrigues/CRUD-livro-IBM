@@ -19,6 +19,7 @@ import br.com.ibm.consulting.bootcamp.demospring.domain.Livro;
 import br.com.ibm.consulting.bootcamp.demospring.service.LivroService;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/livros")
 public class LivroController {
 	
