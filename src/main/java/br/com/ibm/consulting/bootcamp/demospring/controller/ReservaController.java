@@ -25,7 +25,7 @@ public class ReservaController {
         return service.listar();
     }
 
-    @GetMapping("/email")
+    @GetMapping("/{email}")
     public ResponseEntity<Reserva> obter(@PathVariable String email) {
         var reserva = service.obter(email);
         if (reserva != null) {
@@ -34,7 +34,7 @@ public class ReservaController {
         return new ResponseEntity<Reserva>(reserva, HttpStatus.NOT_FOUND);
     }
 
-    @PutMapping("/email")
+    @PutMapping("{/email}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<Void> atualizar(@RequestBody Reserva reserva, @PathVariable String email) {
         var reservaExistente = service.obter(email);
@@ -47,7 +47,7 @@ public class ReservaController {
 
 
 
-    @DeleteMapping("/email")
+    @DeleteMapping("/{email}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<Void> excluir(@PathVariable String email) {
         var reservaExistente = service.obter(email);
